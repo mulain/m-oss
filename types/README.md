@@ -1,4 +1,4 @@
-# @moss/types
+# @m-oss/types
 
 Shared TypeScript types and validation schemas for DocPille frontend and backend.
 

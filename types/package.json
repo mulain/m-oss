@@ -1,17 +1,25 @@
 {
   "name": "@m-oss/types",
-  "version": "0.1.0",
+  "version": "0.1.5",
   "description": "Shared types for DocPille frontend and backend",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
   "scripts": {
     "build": "tsc",
     "prepare": "npm run build",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx,json}\""
+    "test": "echo \"No tests yet\"",
+    "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx,json}\"",
+    "release": "npm publish --access public"
   },
   "keywords": [
     "moss",
@@ -20,6 +28,10 @@
   ],
   "author": "Wolf Arif Mardin",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mulain/m-oss.git"
+  },
   "devDependencies": {
     "prettier": "^3.5.3",
     "typescript": "^5.0.0",
