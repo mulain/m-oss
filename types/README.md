@@ -5,7 +5,7 @@ Shared TypeScript types and validation schemas for DocPille frontend and backend
 ## Installation
 
 ```bash
-npm install @moss/types
+npm install @m-oss/types
 ```
 
 ## Usage
