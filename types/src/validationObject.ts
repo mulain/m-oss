@@ -23,9 +23,9 @@ export const loginSchema = z.object({
 
 export type LoginDTO = z.infer<typeof loginSchema>
 
-// Register Patient
+// Register Patient Frontend Form
 
-export const registerPatientSchema = z
+export const registerPatientFormSchema = z
   .object({
     firstName: firstNameSchema,
     lastName: lastNameSchema,
@@ -38,7 +38,19 @@ export const registerPatientSchema = z
     path: ['confirmPassword'],
   })
 
-export type RegisterPatientDTO = Omit<z.infer<typeof registerPatientSchema>, 'confirmPassword'>
+export type RegisterPatientFormDTO = z.infer<typeof registerPatientFormSchema>
+
+// Register Patient Backend DTO
+
+export const registerPatientSchema = z
+  .object({
+    firstName: firstNameSchema,
+    lastName: lastNameSchema,
+    email: emailSchema,
+    password: passwordSchema,
+  })
+ 
+export type RegisterPatientDTO = z.infer<typeof registerPatientSchema>
 
 // Create Doctor
 
