@@ -100,6 +100,15 @@ export const doctorTimeRangeSchema = z.object({
 
 export type DoctorTimeRangeDTO = z.infer<typeof doctorTimeRangeSchema>
 
+// Time Range Query
+
+export const timeRangeSchema = z.object({
+  after: utcDateSchema,
+  before: utcDateSchema,
+})
+
+export type TimeRangeDTO = z.infer<typeof timeRangeSchema>
+
 // Reset Password
 
 export const resetPasswordSchema = z.object({
