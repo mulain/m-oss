@@ -42,14 +42,13 @@ export type RegisterPatientFormDTO = z.infer<typeof registerPatientFormSchema>
 
 // Register Patient Backend DTO
 
-export const registerPatientSchema = z
-  .object({
-    firstName: firstNameSchema,
-    lastName: lastNameSchema,
-    email: emailSchema,
-    password: passwordSchema,
-  })
- 
+export const registerPatientSchema = z.object({
+  firstName: firstNameSchema,
+  lastName: lastNameSchema,
+  email: emailSchema,
+  password: passwordSchema,
+})
+
 export type RegisterPatientDTO = z.infer<typeof registerPatientSchema>
 
 // Create Doctor
