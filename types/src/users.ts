@@ -37,4 +37,5 @@ export interface Patient {
   address: string | null
   dateOfBirth: string | null
   gender: string | null
+  age: number | null
 }
