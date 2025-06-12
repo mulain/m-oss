@@ -146,3 +146,35 @@ export const updateProfileSchema = z
   .partial()
 
 export type UpdateProfileDTO = z.infer<typeof updateProfileSchema>
+
+// Edit Slot Doctor
+
+export const editSlotDoctorSchema = z.object({
+  startTime: utcDateSchema.optional(),
+  endTime: utcDateSchema.optional(),
+  videoCall: z.record(z.any()).optional(),
+  doctorNotes: z.string().optional(),
+})
+
+export type EditSlotDoctorDTO = z.infer<typeof editSlotDoctorSchema>
+
+// Edit Slot Patient
+
+export const editSlotPatientSchema = z.object({
+  reason: z.string().optional(),
+  patientNotes: z.string().optional(),
+})
+
+export type EditSlotPatientDTO = z.infer<typeof editSlotPatientSchema>
+
+// Edit Slot Admin
+
+export const editSlotAdminSchema = z.object({
+  startTime: utcDateSchema.optional(),
+  endTime: utcDateSchema.optional(),
+  videoCall: z.record(z.any()).optional(),
+  reason: z.string().optional(),
+  reservedUntil: utcDateSchema.optional(),
+})
+
+export type EditSlotAdminDTO = z.infer<typeof editSlotAdminSchema>
