@@ -129,9 +129,26 @@ export const resetPasswordSchema = z.object({
 
 export type ResetPasswordDTO = z.infer<typeof resetPasswordSchema>
 
-// Update Profile
+// Update Profile Patient
 
-export const updateProfileSchema = z
+export const updateProfilePatientSchema = z
+  .object({
+    email: emailSchema,
+    password: passwordSchema,
+    firstName: firstNameSchema,
+    lastName: lastNameSchema,
+    phoneNumber: phoneNumberSchema,
+    address: addressSchema,
+    dateOfBirth: dateOfBirthSchema,
+    gender: genderSchema,
+  })
+  .partial()
+
+export type UpdateProfilePatientDTO = z.infer<typeof updateProfilePatientSchema>
+
+// Update Profile Doctor
+
+export const updateProfileDoctorSchema = z
   .object({
     email: emailSchema,
     password: passwordSchema,
@@ -142,10 +159,11 @@ export const updateProfileSchema = z
     dateOfBirth: dateOfBirthSchema,
     gender: genderSchema,
     specialization: specializationSchema,
+    active: z.boolean(),
   })
   .partial()
 
-export type UpdateProfileDTO = z.infer<typeof updateProfileSchema>
+export type UpdateProfileDoctorDTO = z.infer<typeof updateProfileDoctorSchema>
 
 // Edit Slot Doctor
 
