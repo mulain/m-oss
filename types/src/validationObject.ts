@@ -5,13 +5,9 @@ import {
   passwordSchema,
   firstNameSchema,
   lastNameSchema,
-  phoneNumberSchema,
-  addressSchema,
   specializationSchema,
   utcDateSchema,
   uuidSchema,
-  genderSchema,
-  dateOfBirthSchema,
 } from './validationBasic'
 
 // Login
@@ -61,21 +57,6 @@ export const createDoctorSchema = z.object({
 })
 
 export type CreateDoctorDTO = z.infer<typeof createDoctorSchema>
-
-// Edit Doctor
-
-export const editDoctorSchema = z
-  .object({
-    firstName: firstNameSchema,
-    lastName: lastNameSchema,
-    specialization: specializationSchema,
-    active: z.boolean(),
-    phoneNumber: phoneNumberSchema.optional().nullable(),
-    address: addressSchema.optional().nullable(),
-  })
-  .partial()
-
-export type EditDoctorDTO = z.infer<typeof editDoctorSchema>
 
 // Create Appointment Slots
 
@@ -128,42 +109,6 @@ export const resetPasswordSchema = z.object({
 })
 
 export type ResetPasswordDTO = z.infer<typeof resetPasswordSchema>
-
-// Update Profile Patient
-
-export const updateProfilePatientSchema = z
-  .object({
-    email: emailSchema,
-    password: passwordSchema,
-    firstName: firstNameSchema,
-    lastName: lastNameSchema,
-    phoneNumber: phoneNumberSchema,
-    address: addressSchema,
-    dateOfBirth: dateOfBirthSchema,
-    gender: genderSchema,
-  })
-  .partial()
-
-export type UpdateProfilePatientDTO = z.infer<typeof updateProfilePatientSchema>
-
-// Update Profile Doctor
-
-export const updateProfileDoctorSchema = z
-  .object({
-    email: emailSchema,
-    password: passwordSchema,
-    firstName: firstNameSchema,
-    lastName: lastNameSchema,
-    phoneNumber: phoneNumberSchema,
-    address: addressSchema,
-    dateOfBirth: dateOfBirthSchema,
-    gender: genderSchema,
-    specialization: specializationSchema,
-    active: z.boolean(),
-  })
-  .partial()
-
-export type UpdateProfileDoctorDTO = z.infer<typeof updateProfileDoctorSchema>
 
 // Edit Slot Doctor
 
