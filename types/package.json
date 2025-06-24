@@ -1,6 +1,6 @@
 {
   "name": "@m-oss/types",
-  "version": "0.1.26",
+  "version": "0.1.27",
   "description": "Shared types for DocPille frontend and backend",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

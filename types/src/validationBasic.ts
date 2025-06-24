@@ -49,7 +49,7 @@ export const specializationSchema = z
   .trim()
   .min(2, 'Specialization must be at least 2 characters')
 
-export const genderSchema = z.enum(['MALE', 'FEMALE', 'NON_BINARY', 'OTHER', 'PREFER_NOT_TO_SAY'], {
+export const genderSchema = z.enum(['Male', 'Female', 'Non-binary', 'Other', 'Prefer not to say'], {
   message: 'Invalid gender input',
 })
 

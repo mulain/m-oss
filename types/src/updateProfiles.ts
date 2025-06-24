@@ -19,8 +19,6 @@ export const updateIdentitySchema = z.object({
   password: optionalInput(passwordSchema),
   firstName: optionalInput(firstNameSchema),
   lastName: optionalInput(lastNameSchema),
-  phoneNumber: optionalInput(phoneNumberSchema),
-  address: optionalInput(addressSchema),
   dateOfBirth: optionalInput(dateOfBirthSchema),
   gender: optionalInput(genderSchema),
 })
