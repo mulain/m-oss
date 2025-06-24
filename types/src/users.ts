@@ -1,4 +1,5 @@
 import { z } from 'zod'
+import { Gender } from './validationBasic'
 
 export type UserRole = 'PATIENT' | 'DOCTOR' | 'ADMIN'
 
@@ -9,10 +10,10 @@ export interface User {
   firstName: string
   lastName: string
   email: string
+  dateOfBirth: string | null
+  gender: Gender | null
   phoneNumber: string | null
   address: string | null
-  dateOfBirth: string | null
-  gender: string | null
   isEmailVerified: boolean
   role: UserRole
 }
@@ -33,9 +34,9 @@ export interface Patient {
   firstName: string
   lastName: string
   email: string
+  dateOfBirth: string | null
+  gender: Gender | null
   phoneNumber: string | null
   address: string | null
-  dateOfBirth: string | null
-  gender: string | null
   age: number | null
 }

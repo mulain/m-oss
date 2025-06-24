@@ -1,27 +1,51 @@
 import { z } from 'zod'
-import { doctorsEditableSchema, usersEditableSchema } from './editableTableFields'
+import {
+  emailSchema,
+  passwordSchema,
+  firstNameSchema,
+  lastNameSchema,
+  phoneNumberSchema,
+  addressSchema,
+  dateOfBirthSchema,
+  genderSchema,
+  specializationSchema,
+} from './validationBasic'
+import { optionalInput, stripUndefined } from './utils'
 
-// Combined DTOs for updating profiles
+// Update Identity Fields
 
-/**
- * Update Patient-Profile
- *
- * Used by patient-users for updating their profile.
- */
-export const updateProfilePatientSchema = z.object({
-  user: usersEditableSchema.partial(),
+export const updateIdentitySchema = z.object({
+  email: optionalInput(emailSchema),
+  password: optionalInput(passwordSchema),
+  firstName: optionalInput(firstNameSchema),
+  lastName: optionalInput(lastNameSchema),
+  phoneNumber: optionalInput(phoneNumberSchema),
+  address: optionalInput(addressSchema),
+  dateOfBirth: optionalInput(dateOfBirthSchema),
+  gender: optionalInput(genderSchema),
 })
 
-export type UpdateProfilePatientDTO = z.infer<typeof updateProfilePatientSchema>
+export type UpdateIdentityDTO = z.infer<typeof updateIdentitySchema>
+export const cleanedUpdateIdentitySchema = updateIdentitySchema.pipe(stripUndefined)
 
-/**
- * Update Doctor-Profile
- *
- * Used by doctor-users for updating their profile.
- */
-export const updateProfileDoctorSchema = z.object({
-  user: usersEditableSchema.partial(),
-  doctor: doctorsEditableSchema.partial(),
+// Update Contact Fields
+
+export const updateContactSchema = z.object({
+  phoneNumber: optionalInput(phoneNumberSchema),
+  address: optionalInput(addressSchema),
 })
 
-export type UpdateProfileDoctorDTO = z.infer<typeof updateProfileDoctorSchema>
+export type UpdateContactDTO = z.infer<typeof updateContactSchema>
+export const cleanedUpdateContactSchema = updateContactSchema.pipe(stripUndefined)
+
+// Update Doctor Fields
+
+export const updateDoctorSchema = z
+  .object({
+    specialization: optionalInput(specializationSchema),
+    active: z.boolean(),
+  })
+  .partial()
+
+export type UpdateDoctorDTO = z.infer<typeof updateDoctorSchema>
+export const cleanedUpdateDoctorSchema = updateDoctorSchema.pipe(stripUndefined)
