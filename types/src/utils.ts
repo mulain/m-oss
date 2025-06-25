@@ -1,11 +1,15 @@
 import { z } from 'zod'
 
-export const stripUndefined = z
-  .any()
-  .transform(data => Object.fromEntries(Object.entries(data).filter(([_, v]) => v !== undefined)))
-  .refine(data => Object.keys(data).length > 0, {
-    message: 'At least one field must be provided',
-  })
+export const stripUndefined = <T extends z.ZodTypeAny>(schema: T) =>
+  schema
+    .transform(obj =>
+      Object.fromEntries(
+        Object.entries(obj as Record<string, unknown>).filter(([_, v]) => v !== undefined)
+      )
+    )
+    .refine(obj => Object.keys(obj).length > 0, {
+      message: 'At least one field must be provided',
+    }) as unknown as z.ZodEffects<T, z.infer<T>, z.input<T>>
 
 export const optionalInput = <T extends z.ZodTypeAny>(schema: T) =>
   z.preprocess(

@@ -24,7 +24,7 @@ export const updateIdentitySchema = z.object({
 })
 
 export type UpdateIdentityDTO = z.infer<typeof updateIdentitySchema>
-export const cleanedUpdateIdentitySchema = updateIdentitySchema.pipe(stripUndefined)
+export const cleanedUpdateIdentitySchema = stripUndefined(updateIdentitySchema)
 
 // Update Contact Fields
 
@@ -34,7 +34,7 @@ export const updateContactSchema = z.object({
 })
 
 export type UpdateContactDTO = z.infer<typeof updateContactSchema>
-export const cleanedUpdateContactSchema = updateContactSchema.pipe(stripUndefined)
+export const cleanedUpdateContactSchema = stripUndefined(updateContactSchema)
 
 // Update Doctor Fields
 
@@ -46,4 +46,25 @@ export const updateDoctorSchema = z
   .partial()
 
 export type UpdateDoctorDTO = z.infer<typeof updateDoctorSchema>
-export const cleanedUpdateDoctorSchema = updateDoctorSchema.pipe(stripUndefined)
+export const cleanedUpdateDoctorSchema = stripUndefined(updateDoctorSchema)
+
+// Combined DTO for Admin Doctor Editing
+
+export const updateProfileDoctorSchema = z.object({
+  identity: updateIdentitySchema.partial(),
+  contact: updateContactSchema.partial(),
+  doctor: updateDoctorSchema.partial(),
+})
+
+export type UpdateProfileDoctorDTO = z.infer<typeof updateProfileDoctorSchema>
+export const cleanedUpdateProfileDoctorSchema = stripUndefined(updateProfileDoctorSchema)
+
+// Combined DTO for Admin Patient Editing
+
+export const updateProfilePatientSchema = z.object({
+  identity: updateIdentitySchema.partial(),
+  contact: updateContactSchema.partial(),
+})
+
+export type UpdateProfilePatientDTO = z.infer<typeof updateProfilePatientSchema>
+export const cleanedUpdateProfilePatientSchema = stripUndefined(updateProfilePatientSchema)
