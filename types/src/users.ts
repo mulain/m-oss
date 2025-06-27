@@ -23,10 +23,15 @@ export interface Doctor {
   firstName: string
   lastName: string
   email: string
-  phoneNumber?: string
-  address?: string
-  specialization?: string
+  phoneNumber: string | null
+  address: string | null
+  specialization: string | null
   active: boolean
+}
+
+export interface DoctorFull extends Doctor {
+  dateOfBirth: string | null
+  gender: Gender | null
 }
 
 export interface Patient {
