@@ -11,27 +11,13 @@ export const appointmentStatusEnum = z.enum([
 
 export type AppointmentStatus = z.infer<typeof appointmentStatusEnum>
 
-export interface Slot {
-  appointmentId: string
+export interface BasicSlot {
+  id: string
   startTime: string
   endTime: string
-  bookedAt: string | null
-  reservedUntil: string | null
-  reason: string | null
-  patientNotes: string | null
-  doctorNotes: string | null
-  videoCall: Record<string, unknown> | null
-  status: AppointmentStatus
-  patient: Patient | null
-  doctor: Doctor | null
-  createdAt: Date
-  updatedAt: Date
 }
 
-export interface PatientSlot {
-  appointmentId: string
-  startTime: string
-  endTime: string
+export interface Slot extends BasicSlot {
   bookedAt: string | null
   reservedUntil: string | null
   reason: string | null
@@ -41,16 +27,12 @@ export interface PatientSlot {
   doctor: Doctor
 }
 
-export interface DoctorSlot {
-  appointmentId: string
-  startTime: string
-  endTime: string
-  bookedAt: string | null
-  reservedUntil: string | null
-  reason: string | null
-  patientNotes: string | null
+export interface DoctorSlot extends Slot {
   doctorNotes: string | null
-  videoCall: Record<string, unknown> | null
-  status: AppointmentStatus
   patient: Patient | null
+}
+
+export interface FullSlot extends DoctorSlot {
+  createdAt: Date
+  updatedAt: Date
 }
