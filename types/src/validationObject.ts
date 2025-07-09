@@ -73,13 +73,13 @@ export const createSlotsSchema = z.object({
 
 export type CreateSlotsDTO = z.infer<typeof createSlotsSchema>
 
-// Forgot Password
+// Email Payload (used for forgot password, resend verification)
 
-export const forgotPasswordSchema = z.object({
+export const emailPayloadSchema = z.object({
   email: emailSchema,
 })
 
-export type ForgotPasswordDTO = z.infer<typeof forgotPasswordSchema>
+export type EmailPayloadDTO = z.infer<typeof emailPayloadSchema>
 
 // Doctor Time Range
 // e.g. get slots for a doctor between two dates
