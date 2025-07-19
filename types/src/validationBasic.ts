@@ -3,6 +3,8 @@ import { isBefore, parseISO, subYears, isValid } from 'date-fns'
 
 export const uuidSchema = z.string().uuid({ message: 'Must be a valid UUID' })
 
+export const urlSchema = z.string().url({ message: 'Must be a valid URL' })
+
 export const utcDateSchema = z
   .string()
   .regex(/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d+)?Z$/, {

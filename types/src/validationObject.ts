@@ -8,6 +8,7 @@ import {
   specializationSchema,
   utcDateSchema,
   uuidSchema,
+  urlSchema,
 } from './validationBasic'
 
 // Login
@@ -110,12 +111,25 @@ export const resetPasswordSchema = z.object({
 
 export type ResetPasswordDTO = z.infer<typeof resetPasswordSchema>
 
+// Video Call
+
+export const videoCallProviderSchema = z.enum(['zoom', 'teams', 'google_meet', 'jitsi', 'other'])
+export type VideoCallProvider = z.infer<typeof videoCallProviderSchema>
+
+export const videoCallSchema = z.object({
+  url: urlSchema.optional(),
+  provider: videoCallProviderSchema.optional(),
+  password: z.string().optional(),
+})
+
+export type VideoCallDTO = z.infer<typeof videoCallSchema>
+
 // Edit Slot Doctor
 
 export const editSlotDoctorSchema = z.object({
   startTime: utcDateSchema.optional(),
   endTime: utcDateSchema.optional(),
-  videoCall: z.record(z.any()).optional(),
+  videoCall: videoCallSchema.optional(),
   doctorNotes: z.string().optional(),
 })
 
@@ -135,7 +149,7 @@ export type EditSlotPatientDTO = z.infer<typeof editSlotPatientSchema>
 export const editSlotAdminSchema = z.object({
   startTime: utcDateSchema.optional(),
   endTime: utcDateSchema.optional(),
-  videoCall: z.record(z.any()).optional(),
+  videoCall: videoCallSchema.optional(),
   reason: z.string().optional(),
   reservedUntil: utcDateSchema.optional(),
 })
