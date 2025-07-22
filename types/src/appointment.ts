@@ -14,7 +14,7 @@ export type AppointmentStatus = z.infer<typeof appointmentStatusEnum>
 export interface VideoCall {
   url: string | null
   provider: string | null
-  password?: string
+  password: string | null
 }
 
 export interface BasicSlot {
@@ -23,7 +23,7 @@ export interface BasicSlot {
   endTime: string
 }
 
-export interface Slot extends BasicSlot {
+export interface PatientSlot extends BasicSlot {
   bookedAt: string | null
   reservedUntil: string | null
   reason: string | null
@@ -33,7 +33,7 @@ export interface Slot extends BasicSlot {
   doctor: Doctor
 }
 
-export interface DoctorSlot extends Slot {
+export interface DoctorSlot extends PatientSlot {
   doctorNotes: string | null
   patient: Patient | null
 }

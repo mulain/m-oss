@@ -117,9 +117,9 @@ export const videoCallProviderSchema = z.enum(['zoom', 'teams', 'google_meet', '
 export type VideoCallProvider = z.infer<typeof videoCallProviderSchema>
 
 export const videoCallSchema = z.object({
-  url: urlSchema.optional(),
-  provider: videoCallProviderSchema.optional(),
-  password: z.string().optional(),
+  url: urlSchema.optional().nullable(),
+  provider: videoCallProviderSchema.optional().nullable(),
+  password: z.string().optional().nullable(),
 })
 
 export type VideoCallDTO = z.infer<typeof videoCallSchema>
@@ -129,8 +129,8 @@ export type VideoCallDTO = z.infer<typeof videoCallSchema>
 export const editSlotDoctorSchema = z.object({
   startTime: utcDateSchema.optional(),
   endTime: utcDateSchema.optional(),
-  videoCall: videoCallSchema.optional(),
-  doctorNotes: z.string().optional(),
+  videoCall: videoCallSchema.optional().nullable(),
+  doctorNotes: z.string().optional().nullable(),
 })
 
 export type EditSlotDoctorDTO = z.infer<typeof editSlotDoctorSchema>
@@ -138,8 +138,8 @@ export type EditSlotDoctorDTO = z.infer<typeof editSlotDoctorSchema>
 // Edit Slot Patient
 
 export const editSlotPatientSchema = z.object({
-  reason: z.string().optional(),
-  patientNotes: z.string().optional(),
+  reason: z.string().optional().nullable(),
+  patientNotes: z.string().optional().nullable(),
 })
 
 export type EditSlotPatientDTO = z.infer<typeof editSlotPatientSchema>
@@ -149,9 +149,9 @@ export type EditSlotPatientDTO = z.infer<typeof editSlotPatientSchema>
 export const editSlotAdminSchema = z.object({
   startTime: utcDateSchema.optional(),
   endTime: utcDateSchema.optional(),
-  videoCall: videoCallSchema.optional(),
-  reason: z.string().optional(),
-  reservedUntil: utcDateSchema.optional(),
+  videoCall: videoCallSchema.optional().nullable(),
+  reason: z.string().optional().nullable(),
+  reservedUntil: utcDateSchema.optional().nullable(),
 })
 
 export type EditSlotAdminDTO = z.infer<typeof editSlotAdminSchema>
